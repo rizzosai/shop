@@ -60,7 +60,8 @@ def trial_signup_webhook():
             'package': package,
             'signup_date': datetime.now().isoformat(),
             'status': 'trial_active',
-            'conversion_price': 499
+            'conversion_price': 499,
+            'trial_length_days': 3
         }
         
         # Here you would typically save to database
@@ -71,7 +72,7 @@ def trial_signup_webhook():
             'status': 'success',
             'message': 'Trial signup processed',
             'user_id': email,
-            'trial_expires': '7_days'
+            'trial_expires': '3_days'
         }), 200
         
     except Exception as e:
@@ -100,7 +101,8 @@ def trial_conversion_webhook():
             'payment_id': payment_id,
             'conversion_date': datetime.now().isoformat(),
             'status': 'paid_member',
-            'package': 'premium'
+            'package': 'premium',
+            'converted_from_trial': True
         }
         
         # Here you would update user status in database
@@ -162,7 +164,7 @@ def payment_success_webhook():
 
 @app.route('/webhook/trial-expired', methods=['POST'])
 def trial_expired_webhook():
-    """Handle trial expiration notifications from Zapier"""
+    """Handle trial expiration notifications from Zapier (3 days)"""
     try:
         data = request.get_json()
         logger.info(f"Trial expired webhook received: {data}")
@@ -174,7 +176,8 @@ def trial_expired_webhook():
             'email': email,
             'expiration_date': datetime.now().isoformat(),
             'status': 'trial_expired',
-            'action_needed': 'upgrade_to_paid'
+            'action_needed': 'upgrade_to_paid',
+            'trial_duration': '3_days'
         }
         
         logger.info(f"Trial expired: {expiration_data}")
@@ -202,12 +205,14 @@ def test_webhook():
         return jsonify({
             'status': 'success',
             'message': 'Test webhook working',
-            'received_data': data
+            'received_data': data,
+            'trial_period': '3_days'
         }), 200
     else:
         return jsonify({
             'status': 'success',
             'message': 'Webhook endpoint is active',
+            'trial_period': '3_days',
             'endpoints': [
                 '/webhook/trial-signup',
                 '/webhook/trial-conversion', 

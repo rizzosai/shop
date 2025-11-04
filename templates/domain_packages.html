@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domain.RizzosAI.com - Choose Your Package</title>
+    <title>Domain.RizzosAI.com - Start Your Free Trial</title>
     <style>
         * {
             margin: 0;
@@ -41,9 +41,61 @@
             margin-bottom: 30px;
         }
 
+        .free-trial-hero {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .free-trial-hero h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .free-trial-hero p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+        }
+
+        .trial-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .trial-feature {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .start-trial-btn {
+            background: white;
+            color: #28a745;
+            padding: 20px 50px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.4em;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px;
+            transition: all 0.3s;
+        }
+
+        .start-trial-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
         .packages-section {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 25px;
             margin: 40px 0;
         }
@@ -115,6 +167,13 @@
             margin-bottom: 10px;
         }
 
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.6em;
+            margin-right: 10px;
+        }
+
         .package-subtitle {
             color: #666;
             margin-bottom: 25px;
@@ -158,62 +217,22 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
+        .conversion-notice {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
         .value-proposition {
             background: white;
             border-radius: 20px;
             padding: 40px;
             margin: 40px 0;
             text-align: center;
-        }
-
-        .testimonials {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
-        }
-
-        .testimonial {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-            border-left: 5px solid #667eea;
-        }
-
-        .comparison-table {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 15px;
-            text-align: center;
-            border-bottom: 1px solid #eee;
-        }
-
-        th {
-            background: #667eea;
-            color: white;
-            font-weight: bold;
-        }
-
-        .check {
-            color: #28a745;
-            font-size: 1.2em;
-        }
-
-        .cross {
-            color: #dc3545;
-            font-size: 1.2em;
         }
 
         @media (max-width: 768px) {
@@ -235,92 +254,96 @@
     <div class="container">
         <div class="header">
             <h1> Domain.RizzosAI.com</h1>
-            <p>Choose Your Domain Investing Package</p>
-            <p>From beginner-friendly to empire-building - we've got you covered!</p>
+            <p>Master Domain Investing with AI-Powered Intelligence</p>
+            <p>Start Your Journey Today - 3-Day Free Trial Available!</p>
+        </div>
+
+        <div class="free-trial-hero">
+            <h2> Start Your FREE 3-Day Trial</h2>
+            <p>Experience the power of AI-driven domain investing risk-free!</p>
+            <p><strong>No credit card required  Cancel anytime  Full access</strong></p>
+            
+            <div class="trial-features">
+                <div class="trial-feature">
+                    <h3> Coey AI Assistant</h3>
+                    <p>Personal AI that finds profitable domains 24/7</p>
+                </div>
+                <div class="trial-feature">
+                    <h3> Market Analysis</h3>
+                    <p>Real-time domain valuation and trend analysis</p>
+                </div>
+                <div class="trial-feature">
+                    <h3> Expert Strategies</h3>
+                    <p>Proven techniques used by 6-figure domain investors</p>
+                </div>
+                <div class="trial-feature">
+                    <h3> Domain Lists</h3>
+                    <p>Access to curated lists of profitable domains</p>
+                </div>
+            </div>
+            
+            <button class="start-trial-btn" onclick="startFreeTrial()"> START 3-DAY FREE TRIAL NOW</button>
+            <p style="margin-top: 20px; font-size: 0.9em;">After 3 days: Continue for just  one-time payment</p>
+        </div>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <h2 style="color: white; margin-bottom: 20px;">Or Choose Your Package Directly</h2>
         </div>
 
         <div class="packages-section">
             <div class="package starter">
-                <div class="package-badge badge-starter">BEST FOR BEGINNERS</div>
-                <div class="package-title"> Starter</div>
-                <div class="package-price"></div>
-                <div class="package-subtitle">Perfect entry point</div>
+                <div class="package-badge badge-starter">MOST POPULAR</div>
+                <div class="package-title"> Free Trial  Premium</div>
+                <div class="package-price">
+                    <span class="original-price"></span>
+                    
+                </div>
+                <div class="package-subtitle">Best value for serious investors</div>
+                <div class="conversion-notice">
+                    <strong>FREE 3-Day Trial Included!</strong><br>
+                    Then  one-time payment to continue
+                </div>
                 <ul class="package-features">
-                    <li>Domain Investing Basics Course</li>
-                    <li>10 Proven Domain Lists</li>
-                    <li>Basic Coey AI Access</li>
-                    <li>Email Templates</li>
-                    <li>Community Access</li>
-                    <li>7-Day Money Back Guarantee</li>
-                    <li>PDF Guides & Checklists</li>
-                </ul>
-                <button class="buy-btn" onclick="selectPackage('starter', 29)"> Start Your Journey</button>
-            </div>
-
-            <div class="package">
-                <div class="package-title"> Accelerator</div>
-                <div class="package-price"></div>
-                <div class="package-subtitle">Speed up your success</div>
-                <ul class="package-features">
-                    <li>Everything in Starter Package</li>
-                    <li>Advanced Domain Strategies</li>
-                    <li>25 Premium Domain Lists</li>
-                    <li>Enhanced Coey AI Features</li>
-                    <li>Negotiation Masterclass</li>
-                    <li>Market Analysis Tools</li>
-                    <li>Monthly Live Training</li>
-                    <li>14-Day Money Back Guarantee</li>
-                    <li>Email & Discord Support</li>
-                </ul>
-                <button class="buy-btn" onclick="selectPackage('accelerator', 99)"> Accelerate Growth</button>
-            </div>
-
-            <div class="package popular">
-                <div class="package-badge badge-popular">MOST POPULAR</div>
-                <div class="package-title"> Professional</div>
-                <div class="package-price"></div>
-                <div class="package-subtitle">Serious investors choice</div>
-                <ul class="package-features">
-                    <li>Everything in Accelerator Package</li>
-                    <li>Professional Domain Portfolio</li>
-                    <li>40+ Premium Domain Lists</li>
-                    <li>Full Coey AI Suite</li>
-                    <li>Advanced Automation Scripts</li>
-                    <li>Weekly Strategy Sessions</li>
-                    <li>Priority Support</li>
-                    <li>21-Day Money Back Guarantee</li>
-                    <li>Private Telegram Group</li>
-                    <li>Monthly 1-on-1 Call</li>
-                </ul>
-                <button class="buy-btn" onclick="selectPackage('professional', 249)"> Go Professional</button>
-            </div>
-
-            <div class="package">
-                <div class="package-title"> Elite</div>
-                <div class="package-price"></div>
-                <div class="package-subtitle">Elite investor status</div>
-                <ul class="package-features">
-                    <li>Everything in Professional Package</li>
+                    <li>3-Day FREE Trial (Full Access)</li>
                     <li>Complete Domain Investing Masterclass</li>
+                    <li>AI-Powered Coey Assistant</li>
                     <li>50+ Premium Domain Lists</li>
                     <li>Advanced Market Analysis Tools</li>
+                    <li>Negotiation Scripts & Templates</li>
                     <li>Private Discord Community</li>
                     <li>Weekly Live Q&A Sessions</li>
-                    <li>Exclusive Domain Opportunities</li>
-                    <li>30-Day Money Back Guarantee</li>
                     <li>Direct Access to Rizzos</li>
-                    <li>Quarterly Portfolio Review</li>
+                    <li>30-Day Money Back Guarantee</li>
                 </ul>
-                <button class="buy-btn" onclick="selectPackage('elite', 499)"> Join Elite Club</button>
+                <button class="buy-btn" onclick="selectPackage('trial-to-premium', 499)"> Start 3-Day Free Trial</button>
+            </div>
+
+            <div class="package">
+                <div class="package-title"> Instant Access</div>
+                <div class="package-price"></div>
+                <div class="package-subtitle">Skip trial, start immediately</div>
+                <ul class="package-features">
+                    <li>Immediate Full Access</li>
+                    <li>Complete Domain Investing Masterclass</li>
+                    <li>AI-Powered Coey Assistant</li>
+                    <li>50+ Premium Domain Lists</li>
+                    <li>Advanced Market Analysis Tools</li>
+                    <li>Negotiation Scripts & Templates</li>
+                    <li>Private Discord Community</li>
+                    <li>Weekly Live Q&A Sessions</li>
+                    <li>Direct Access to Rizzos</li>
+                    <li>30-Day Money Back Guarantee</li>
+                </ul>
+                <button class="buy-btn" onclick="selectPackage('instant-access', 499)"> Get Instant Access</button>
             </div>
 
             <div class="package featured">
-                <div class="package-badge badge-featured">ULTIMATE VALUE</div>
-                <div class="package-title"> Empire</div>
+                <div class="package-badge badge-featured">VIP OPTION</div>
+                <div class="package-title"> Empire Package</div>
                 <div class="package-price"></div>
-                <div class="package-subtitle">Build your domain empire</div>
+                <div class="package-subtitle">Ultimate domain empire</div>
                 <ul class="package-features">
-                    <li>Everything in Elite Package</li>
+                    <li>Everything in Premium Package</li>
                     <li>3 Hours of 1-on-1 Coaching</li>
                     <li>Done-For-You Domain Portfolio</li>
                     <li>Advanced AI Automation Scripts</li>
@@ -336,11 +359,11 @@
         </div>
 
         <div class="value-proposition">
-            <h2> Why Choose Rizzos AI Domain Training?</h2>
+            <h2> Why Start Your 3-Day Free Trial Today?</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 30px;">
                 <div>
                     <h3> AI-Powered</h3>
-                    <p>Coey AI assistant finds profitable domains 24/7</p>
+                    <p>Coey AI finds domains worth + while you sleep</p>
                 </div>
                 <div>
                     <h3> Proven Results</h3>
@@ -348,130 +371,65 @@
                 </div>
                 <div>
                     <h3> Complete Training</h3>
-                    <p>From basics to advanced empire-building strategies</p>
+                    <p>From  to  domain portfolio in 90 days</p>
                 </div>
                 <div>
                     <h3> High ROI</h3>
                     <p>Turn  investments into ,000+ sales</p>
                 </div>
             </div>
-        </div>
-
-        <div class="comparison-table">
-            <h2 style="text-align: center; margin-bottom: 30px;"> Package Comparison</h2>
-            <table>
-                <tr>
-                    <th>Feature</th>
-                    <th>Starter</th>
-                    <th>Accelerator</th>
-                    <th>Professional</th>
-                    <th>Elite</th>
-                    <th>Empire</th>
-                </tr>
-                <tr>
-                    <td>Domain Lists</td>
-                    <td>10</td>
-                    <td>25</td>
-                    <td>40+</td>
-                    <td>50+</td>
-                    <td>50+</td>
-                </tr>
-                <tr>
-                    <td>Coey AI Access</td>
-                    <td class="check"></td>
-                    <td class="check"></td>
-                    <td class="check"></td>
-                    <td class="check"></td>
-                    <td class="check"></td>
-                </tr>
-                <tr>
-                    <td>Live Training</td>
-                    <td class="cross"></td>
-                    <td>Monthly</td>
-                    <td>Weekly</td>
-                    <td>Weekly</td>
-                    <td>Weekly</td>
-                </tr>
-                <tr>
-                    <td>1-on-1 Coaching</td>
-                    <td class="cross"></td>
-                    <td class="cross"></td>
-                    <td>Monthly</td>
-                    <td>Quarterly</td>
-                    <td>3 Hours</td>
-                </tr>
-                <tr>
-                    <td>Done-For-You Portfolio</td>
-                    <td class="cross"></td>
-                    <td class="cross"></td>
-                    <td class="cross"></td>
-                    <td class="cross"></td>
-                    <td class="check"></td>
-                </tr>
-                <tr>
-                    <td>Direct Access to Rizzos</td>
-                    <td class="cross"></td>
-                    <td class="cross"></td>
-                    <td class="cross"></td>
-                    <td class="check"></td>
-                    <td class="check"></td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="testimonials">
-            <h2 style="text-align: center; margin-bottom: 30px;"> Success Stories</h2>
             
-            <div class="testimonial">
-                <p>"Started with the  Starter package, made my money back in 2 days! Upgraded to Professional within a week."</p>
-                <strong>- Jake M., Professional Member</strong>
-            </div>
-            
-            <div class="testimonial">
-                <p>"The  Professional package changed my life. Making + monthly flipping domains now!"</p>
-                <strong>- Lisa R., Professional Member</strong>
-            </div>
-            
-            <div class="testimonial">
-                <p>"Empire package was the best investment I ever made.  in domain sales in 6 months!"</p>
-                <strong>- Marcus T., Empire Member</strong>
-            </div>
-
-            <div class="testimonial">
-                <p>"Coey AI found me a domain that sold for . This system pays for itself!"</p>
-                <strong>- Sarah L., Elite Member</strong>
+            <div style="margin-top: 40px; padding: 30px; background: #f8f9fa; border-radius: 15px;">
+                <h3> 3-Day Trial Success Stories</h3>
+                <p><em>"I made  in my 3-day trial alone! Couldn't believe it was real until I got paid."</em> - Sarah M.</p>
+                <p><em>"The AI found me a domain that sold for  during my trial. Easiest  I ever spent!"</em> - Marcus R.</p>
+                <p><em>"3-day trial convinced me this system works. Now making + monthly."</em> - Jennifer L.</p>
             </div>
         </div>
 
         <div style="text-align: center; margin: 40px 0; background: white; padding: 40px; border-radius: 20px;">
             <h2> Ready to Start Your Domain Empire?</h2>
-            <p style="font-size: 1.2em; margin: 20px 0;">Choose your package above and start making money with domains today!</p>
+            <p style="font-size: 1.2em; margin: 20px 0;">Start your 3-day free trial today - no risk, all reward!</p>
+            <button class="start-trial-btn" onclick="startFreeTrial()" style="margin: 20px 0;"> START 3-DAY FREE TRIAL NOW</button>
             <p><strong>Questions? Email:</strong> <a href="mailto:support@rizzosai.com">support@rizzosai.com</a></p>
         </div>
     </div>
 
     <script>
+        function startFreeTrial() {
+            // Store trial selection
+            localStorage.setItem('selectedPackage', 'free-trial');
+            localStorage.setItem('conversionPrice', 499);
+            localStorage.setItem('trialDays', 3);
+            
+            // Show confirmation
+            alert( Awesome! Starting your FREE 3-Day Trial!\n\n Full access to everything\n No credit card required\n Cancel anytime\n\nAfter 3 days: Continue for just \n\nRedirecting to trial signup...);
+            
+            // Redirect to trial signup
+            window.location.href = https://backoffice.rizzosai.com/trial-signup?package=free-trial&conversion=499&days=3;
+        }
+
         function selectPackage(packageType, price) {
             // Store package selection
             localStorage.setItem('selectedPackage', packageType);
             localStorage.setItem('selectedPrice', price);
             
-            // Show confirmation
-            alert( Great choice! You've selected the  package for UTF8{price}.\\n\\nRedirecting to secure checkout...);
+            let message = '';
+            if (packageType === 'trial-to-premium') {
+                message =  Great choice! Starting your FREE 3-Day Trial!\n\n Full access during trial\n Then -Force{price} to continue\n 30-day money back guarantee\n\nRedirecting to trial signup...;
+            } else {
+                message =  Excellent choice! You've selected the  package for -Force{price}.\n\nRedirecting to secure checkout...;
+            }
             
-            // Redirect to checkout page - you can customize this URL
-            window.location.href = https://backoffice.rizzosai.com/checkout?package=&price=;
+            alert(message);
+            
+            // Redirect based on package type
+            if (packageType === 'trial-to-premium') {
+                window.location.href = https://backoffice.rizzosai.com/trial-signup?package=&conversion=&days=3;
+            } else {
+                window.location.href = https://backoffice.rizzosai.com/checkout?package=&price=;
+            }
         }
-
-        // Add smooth scrolling for better UX
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
 
         // Add package hover effects
         document.querySelectorAll('.package').forEach(package => {
