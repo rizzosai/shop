@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Webhook Testing - RizzosAI</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .test-section { background: #f8f9fa; padding: 20px; margin: 20px 0; border-radius: 10px; }
+        button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
+        button:hover { background: #0056b3; }
+        .response { background: #e9ecef; padding: 15px; margin: 10px 0; border-radius: 5px; font-family: monospace; }
+        input[type="email"] { width: 300px; padding: 8px; margin: 5px; border: 1px solid #ccc; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1> Webhook Testing Dashboard</h1>
+    <p>Test your Zapier webhooks to make sure they're working properly.</p>
+
+    <div class="test-section">
+        <h3> Test Basic Webhook Connection</h3>
+        <button onclick="testBasicWebhook()">Test Basic Connection</button>
+        <div id="basic-response" class="response" style="display:none;"></div>
+    </div>
+
+    <div class="test-section">
+        <h3> Test Trial Signup Webhook</h3>
+        <input type="email" id="trial-email" placeholder="Enter test email">
+        <input type="text" id="trial-name" placeholder="Enter test name">
+        <button onclick="testTrialSignup()">Test Trial Signup</button>
+        <div id="trial-response" class="response" style="display:none;"></div>
+    </div>
+
+    <div class="test-section">
+        <h3> Test Payment Conversion Webhook</h3>
+        <input type="email" id="payment-email" placeholder="Enter test email">
+        <button onclick="testPaymentConversion()">Test  Conversion</button>
+        <div id="payment-response" class="response" style="display:none;"></div>
+    </div>
+
+    <div class="test-section">
+        <h3> Test Trial Expired Webhook</h3>
+        <input type="email" id="expired-email" placeholder="Enter test email">
+        <button onclick="testTrialExpired()">Test Trial Expired</button>
+        <div id="expired-response" class="response" style="display:none;"></div>
+    </div>
+
+    <div class="test-section">
+        <h3> Webhook Status Check</h3>
+        <button onclick="checkWebhookStatus()">Check All Endpoints</button>
+        <div id="status-response" class="response" style="display:none;"></div>
+    </div>
+
+    <script>
+        const baseUrl = window.location.origin;
+
+        async function testBasicWebhook() {
+            try {
+                const response = await fetch(${baseUrl}/webhook/test);
+                const data = await response.json();
+                document.getElementById('basic-response').style.display = 'block';
+                document.getElementById('basic-response').innerHTML = 
+                    <strong>Status:</strong> <br>
+                    <strong>Response:</strong> 
+                ;
+            } catch (error) {
+                document.getElementById('basic-response').style.display = 'block';
+                document.getElementById('basic-response').innerHTML = <strong>Error:</strong> ;
+            }
+        }
+
+        async function testTrialSignup() {
+            const email = document.getElementById('trial-email').value;
+            const name = document.getElementById('trial-name').value;
+            
+            if (!email) {
+                alert('Please enter an email address');
+                return;
+            }
+
+            try {
+                const response = await fetch(${baseUrl}/webhook/trial-signup, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        name: name,
+                        package: 'free-trial'
+                    })
+                });
+                
+                const data = await response.json();
+                document.getElementById('trial-response').style.display = 'block';
+                document.getElementById('trial-response').innerHTML = 
+                    <strong>Status:</strong> <br>
+                    <strong>Response:</strong> 
+                ;
+            } catch (error) {
+                document.getElementById('trial-response').style.display = 'block';
+                document.getElementById('trial-response').innerHTML = <strong>Error:</strong> ;
+            }
+        }
+
+        async function testPaymentConversion() {
+            const email = document.getElementById('payment-email').value;
+            
+            if (!email) {
+                alert('Please enter an email address');
+                return;
+            }
+
+            try {
+                const response = await fetch(${baseUrl}/webhook/trial-conversion, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        amount: 499,
+                        payment_id: 'test_payment_' + Date.now()
+                    })
+                });
+                
+                const data = await response.json();
+                document.getElementById('payment-response').style.display = 'block';
+                document.getElementById('payment-response').innerHTML = 
+                    <strong>Status:</strong> <br>
+                    <strong>Response:</strong> 
+                ;
+            } catch (error) {
+                document.getElementById('payment-response').style.display = 'block';
+                document.getElementById('payment-response').innerHTML = <strong>Error:</strong> ;
+            }
+        }
+
+        async function testTrialExpired() {
+            const email = document.getElementById('expired-email').value;
+            
+            if (!email) {
+                alert('Please enter an email address');
+                return;
+            }
+
+            try {
+                const response = await fetch(${baseUrl}/webhook/trial-expired, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email
+                    })
+                });
+                
+                const data = await response.json();
+                document.getElementById('expired-response').style.display = 'block';
+                document.getElementById('expired-response').innerHTML = 
+                    <strong>Status:</strong> <br>
+                    <strong>Response:</strong> 
+                ;
+            } catch (error) {
+                document.getElementById('expired-response').style.display = 'block';
+                document.getElementById('expired-response').innerHTML = <strong>Error:</strong> ;
+            }
+        }
+
+        async function checkWebhookStatus() {
+            const endpoints = [
+                '/webhook/test',
+                '/webhook/trial-signup',
+                '/webhook/trial-conversion',
+                '/webhook/payment-success', 
+                '/webhook/trial-expired'
+            ];
+
+            let statusHtml = '<h4>Endpoint Status Check:</h4>';
+            
+            for (const endpoint of endpoints) {
+                try {
+                    const response = await fetch(${baseUrl}, {
+                        method: endpoint === '/webhook/test' ? 'GET' : 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: endpoint !== '/webhook/test' ? JSON.stringify({test: true}) : null
+                    });
+                    
+                    statusHtml += <br>  - Status: ;
+                } catch (error) {
+                    statusHtml += <br>  - Error: ;
+                }
+            }
+            
+            document.getElementById('status-response').style.display = 'block';
+            document.getElementById('status-response').innerHTML = statusHtml;
+        }
+    </script>
+</body>
+</html>

@@ -25,6 +25,11 @@ def domain_packages():
     """Domain packages selection page for domain.rizzosai.com"""
     return render_template('domain_packages.html')
 
+@app.route('/webhook-test')
+def webhook_test_page():
+    """Webhook testing dashboard"""
+    return render_template('webhook_test.html')
+
 @app.route('/privacy')
 def privacy():
     """Privacy policy page"""
